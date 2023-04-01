@@ -48,3 +48,30 @@ export const listByUser = async (req, res) => {
     });
   }
 };
+export const read = (req, res) => {
+  return res.json(req.appointment);
+};
+export const remove = async (req, res) => {
+  try {
+    let deletedAppointment = req.appointment;
+    await Appointment.deleteOne(deletedAppointment._id);
+    return res.json(deletedAppointment);
+  } catch (err) {
+    return res.status(400).json({
+      error: "something went wrong",
+    });
+  }
+};
+export const update = async (req, res) => {
+  try {
+    let appointment = req.appointment;
+    appointment = extend(appointment, req.body);
+    appointment.updated = Date.now();
+    await appointment.save();
+    return res.json(appointment);
+  } catch (err) {
+    return res.status(400).json({
+      error: "something went wrong",
+    });
+  }
+};
