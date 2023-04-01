@@ -32,4 +32,17 @@ describe("POST /api/appointments", () => {
     expect(res.status).toBe(200);
     expect(res.body.message).toBe("Appointment created successfully");
   });
+  test("should not create an appointment with an invalid data", async () => {
+    await createUser();
+    const authHeader = await getUserHeader();
+    const res = await request
+      .post(`/api/users/${user._id}/appointments`)
+      .set("Authorization", `Bearer ${authHeader}`)
+      .send({
+        aptNotes: "Test",
+        aptDate: "2022-04-01",
+      });
+    expect(res.status).toBe(400);
+    expect(res.body.error).toBe("Something went wrong");
+  });
 });
