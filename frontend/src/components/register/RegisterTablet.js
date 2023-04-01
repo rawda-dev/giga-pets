@@ -67,7 +67,7 @@ export const RegisterTablet = ({
         size="large"
         onClick={onLogin}
       >
-        Login
+        Register
       </ButtonContainer>
       <FormHelperText error>{error}</FormHelperText>
     </CenteredContainer>

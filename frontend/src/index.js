@@ -10,15 +10,20 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import { Register } from "./pages/Register";
+import { ThemeProvider } from "@mui/material";
+import theme from "./theme";
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <React.StrictMode>
     <BrowserRouter>
+    <ThemeProvider theme={theme}>
       <Routes>
         <Route path="/" exact element={<App />} />
         <Route path="/register" exact element={<Register />} />
         <Route path="/login" exact element={<Login />} />
       </Routes>
+    </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

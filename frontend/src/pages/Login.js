@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import { LoginTablet } from "../components/login/LoginTablet";
 import { LoginDesktop } from "../components/login/LoginDesktop";
 import { LoginMobile } from "../components/login/LoginMobile";
+import { authenticate } from "../utils/auth";
 export const Login = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -16,18 +17,21 @@ export const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const onLogin = () => {
-    if ( email === "" || password === "") {
+    if (email === "" || password === "") {
       setError("Please fill in all fields");
     } else {
       axios
         .post("/api/auth/login", {
-        
           email,
           password,
         })
         .then((res) => {
-          console.log(res.data);
-          navigate("/");
+          authenticate(res.data, () => {
+            console.log("Login successful");
+            console.log(res.data);
+            setError("");
+            navigate("/");
+          });
         })
         .catch((err) => {
           setError(err.response.data.message);

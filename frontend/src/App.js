@@ -1,11 +1,12 @@
 import React from "react";
-import { Button } from "@mui/material"
+import { Button } from "@mui/material";
+import { Navbar } from "./components/Navbar";
+import { WithNavbar } from "./pages/WithNavbar";
 function App() {
-    return (
-        <div>
-            <h2>Hello</h2>
-            
-        </div>
+  return (
+    <WithNavbar>
+      <h2>Hello World</h2>
+    </WithNavbar>
   );
 }
 
