@@ -76,4 +76,13 @@ describe("GET /api/users/:userId/appointments", () => {
     expect(res.status).toBe(401);
     expect(res.body.error).toBe("Could not retrieve user");
   });
+  test("should not get all appointments with an invalid token", async () => {
+    await createUser();
+    const authHeader = await getUserHeader();
+    const res = await request
+      .get(`/api/users/${user._id}/appointments`)
+      .set("Authorization", `Bearer ${authHeader}123`);
+    expect(res.status).toBe(401);
+    expect(res.body.error).toContain("Unauthorized");
+  });
 });
