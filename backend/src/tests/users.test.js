@@ -139,3 +139,24 @@ describe("GET /api/users", () => {
     expect(res.body).toHaveLength(3);
   });
 });
+describe("POST /api/users/login", () => {
+  test("should login a user", async () => {
+    await createUser();
+    const res = await request.post("/api/auth/login").send({
+      email: "test1@test.com",
+      password: "testTest123*&",
+    });
+
+    expect(res.status).toBe(200);
+    expect(res.body.token).toBeTruthy();
+  });
+  test("should not login a user with invalid credentials", async () => {
+    await createUser();
+    const res = await request.post("/api/auth/login").send({
+      email: "test1@test.com",
+      password: "wrongPassword",
+    });
+    expect(res.status).toBe(401);
+    expect(res.body.error).toBe("Email and password don't match.");
+  });
+});
