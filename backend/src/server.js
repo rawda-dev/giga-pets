@@ -1,11 +1,14 @@
 import express from "express";
 import mongoose from "mongoose";
 import { config } from "./config";
+import cors from "cors";
 const app = express();
 import authRouter from "./routes/auth.route";
 import usersRouter from "./routes/user.route";
 import appointmentsRouter from "./routes/appointment.route";
 app.use(express.json());
+app.use(cors( { origin: "http://localhost:3000" }));
+
 app.get("/", (req, res) => {
   res.send("Giga Pets!");
 });

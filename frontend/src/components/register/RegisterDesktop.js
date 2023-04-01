@@ -1,6 +1,6 @@
 import React from "react";
-import { Button, Grid, TextField } from "@mui/material";
-import petsVector from "../assets/pets_vector.png";
+import { Button, FormHelperText, Grid, TextField } from "@mui/material";
+import petsVector from "../../assets/pets_vector.png";
 import styled from "styled-components";
 import { RegisterTablet } from "./RegisterTablet";
 const CenteredContainer = styled(Grid)`
@@ -20,13 +20,23 @@ const RightGrid = styled(Grid)`
   align-items: center;
   justify-content: center;
   gap: 0.2rem;
-  background-color: #E5F8FB;
+  background-color: #e5f8fb;
 `;
 const GridContainer = styled(Grid)`
   height: 100vh;
 `;
 
-export const RegisterDesktop = () => {
+export const RegisterDesktop = ({
+  name,
+  setName,
+  email,
+  setEmail,
+  password,
+  setPassword,
+  error,
+  setError,
+  onRegister,
+}) => {
   return (
     <GridContainer container>
       <Grid item xs={6}>
@@ -35,8 +45,19 @@ export const RegisterDesktop = () => {
         </CenteredContainer>
       </Grid>
       <RightGrid item xs={6}>
-        <RegisterTablet />
+        <RegisterTablet
+          name={name}
+          setName={setName}
+          email={email}
+          setEmail={setEmail}
+          password={password}
+          setPassword={setPassword}
+          error={error}
+          setError={setError}
+          onRegister={onRegister}
+        />
       </RightGrid>
+      {error && <FormHelperText>{error}</FormHelperText>}
     </GridContainer>
   );
 };
