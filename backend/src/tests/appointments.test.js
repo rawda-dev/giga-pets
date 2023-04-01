@@ -179,4 +179,23 @@ describe("DELETE /api/users/:userId/appointments/:aptId", () => {
     expect(res.body.petName).toBe("Test");
     expect(res.body.aptNotes).toBe("Test");
   });
+  test("should not delete an appointment with an invalid token", async () => {
+    await createUser();
+    const authHeader = await getUserHeader();
+    const res1 = await request
+      .post(`/api/users/${user._id}/appointments`)
+      .set("Authorization", `Bearer ${authHeader}`)
+      .send({
+        petName: "Test",
+        aptNotes: "Test",
+        aptDate: "2022-04-01",
+      });
+    const appointment = await Appointment.findOne({ user: user._id });
+    expect(res1.status).toBe(200);
+    const res = await request
+      .delete(`/api/users/${user._id}/appointments/${appointment._id}`)
+      .set("Authorization", `Bearer ${authHeader}123`);
+    expect(res.status).toBe(401);
+    expect(res.body.error).toContain("Unauthorized");
+  });
 });
