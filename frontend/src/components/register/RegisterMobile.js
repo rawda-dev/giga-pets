@@ -2,49 +2,34 @@ import logo from "../../assets/logo.png";
 import { Button, TextField, Container, FormHelperText } from "@mui/material";
 import styled from "styled-components";
 const CenteredContainer = styled(Container)`
-    display: flex !important;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    gap: 0.2rem;
-    
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  gap: 0.2rem;
 `;
 const Logo = styled.img`
-    width: 10rem;
-    margin-bottom: 2rem;
+  width: 10rem;
+  margin-bottom: 2rem;
 `;
 const ButtonContainer = styled(Button)`
-   
-    margin-top: 4rem !important;
+  margin-top: 4rem !important;
 `;
 
-export const RegisterMobile = (
-  {
-    name,
-    setName,
-    email,
-    setEmail,
-    password,
-    setPassword,
-    error,
-    setError,
-    onRegister,
-    
-  }
-) => {
+export const RegisterMobile = ({
+  email,
+  setEmail,
+  password,
+  setPassword,
+  error,
+  setError,
+  onRegister,
+}) => {
   return (
     <CenteredContainer>
-      <Logo  src={logo} alt="logo" />
-      <TextField
-        id="outlined-basic"
-        label="Name"
-        variant="outlined"
-        fullWidth
-        margin="normal"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
+      <Logo src={logo} alt="logo" />
+
       <TextField
         id="outlined-basic"
         label="Email"
@@ -65,9 +50,12 @@ export const RegisterMobile = (
         onChange={(e) => setPassword(e.target.value)}
         margin="normal"
       />
-      <ButtonContainer variant="contained" color="warning" size="large"
+      <ButtonContainer
+        variant="contained"
+        color="warning"
+        size="large"
         onClick={onRegister}
-        >
+      >
         Register
       </ButtonContainer>
       {error && <FormHelperText error>{error}</FormHelperText>}

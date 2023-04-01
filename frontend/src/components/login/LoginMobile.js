@@ -6,7 +6,7 @@ const CenteredContainer = styled(Container)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 6rem !important;
+  padding: 2rem;
   gap: 0.2rem;
 `;
 const Logo = styled.img`
@@ -17,36 +17,25 @@ const ButtonContainer = styled(Button)`
   margin-top: 4rem !important;
 `;
 
-export const RegisterTablet = ({
-  name,
-  setName,
+export const LoginMobile = ({
   email,
   setEmail,
   password,
   setPassword,
   error,
+  setError,
   onLogin,
 }) => {
   return (
     <CenteredContainer>
       <Logo src={logo} alt="logo" />
-      <TextField
-        id="outlined-basic"
-        label="Name"
-        variant="outlined"
-        fullWidth
-        type="text"
-        margin="normal"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
 
       <TextField
         id="outlined-basic"
         label="Email"
+        type="email"
         variant="outlined"
         fullWidth
-        type="email"
         margin="normal"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
@@ -69,7 +58,7 @@ export const RegisterTablet = ({
       >
         Login
       </ButtonContainer>
-      <FormHelperText error>{error}</FormHelperText>
+      {error && <FormHelperText error>{error}</FormHelperText>}
     </CenteredContainer>
   );
 };

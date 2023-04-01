@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
+import { Login } from "./pages/Login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import "@fontsource/roboto/300.css";
@@ -16,6 +17,7 @@ root.render(
       <Routes>
         <Route path="/" exact element={<App />} />
         <Route path="/register" exact element={<Register />} />
+        <Route path="/login" exact element={<Login />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

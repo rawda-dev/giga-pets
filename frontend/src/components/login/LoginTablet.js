@@ -17,30 +17,19 @@ const ButtonContainer = styled(Button)`
   margin-top: 4rem !important;
 `;
 
-export const RegisterTablet = ({
-  name,
-  setName,
+export const LoginTablet = ({
+  
   email,
   setEmail,
   password,
   setPassword,
   error,
+  setError,
   onLogin,
 }) => {
   return (
     <CenteredContainer>
       <Logo src={logo} alt="logo" />
-      <TextField
-        id="outlined-basic"
-        label="Name"
-        variant="outlined"
-        fullWidth
-        type="text"
-        margin="normal"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-
       <TextField
         id="outlined-basic"
         label="Email"
