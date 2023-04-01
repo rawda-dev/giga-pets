@@ -24,7 +24,7 @@ if (process.env.NODE_ENV !== "test") {
       console.log(`DB Connection Error: ${err.message}`);
     });
   app.listen(config.PORT, () => {
-    console.log("Stream Mix listening on port 4000!!");
+    console.log("Giga Pets listening on port 4000!!");
   });
 }
 export default app;

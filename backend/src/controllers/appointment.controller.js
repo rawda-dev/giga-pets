@@ -15,3 +15,36 @@ export const create = async (req, res) => {
     });
   }
 };
+export const appointmentByID = async (req, res, next, id) => {
+  try {
+    let appointment = await Appointment.findById(id).populate(
+      "user",
+      "_id name"
+    );
+
+    if (!appointment)
+      return res.status("400").json({
+        error: "Appointment not found",
+      });
+    req.appointment = appointment;
+    next();
+  } catch (err) {
+    return res.status("400").json({
+      error: "Could not retrieve appointment",
+    });
+  }
+};
+export const listByUser = async (req, res) => {
+  try {
+    let appointments = await Appointment.find({ user: req.profile._id })
+      .sort("-created")
+      .populate("user", "_id name")
+      .exec();
+
+    return res.json(appointments);
+  } catch (err) {
+    return res.status(400).json({
+      error: "something went wrong",
+    });
+  }
+};
