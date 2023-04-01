@@ -86,3 +86,35 @@ describe("GET /api/users/:userId/appointments", () => {
     expect(res.body.error).toContain("Unauthorized");
   });
 });
+describe("GET /api/users/:userId/appointments/:aptId", () => {
+  test("should get an appointment", async () => {
+    await createUser();
+    const authHeader = await getUserHeader();
+    const res1 = await request
+      .post(`/api/users/${user._id}/appointments`)
+      .set("Authorization", `Bearer ${authHeader}`)
+      .send({
+        petName: "Test",
+        aptNotes: "Test",
+        aptDate: "2022-04-01",
+      });
+      const appointment = await Appointment.findOne({user: user._id});
+    expect(res1.status).toBe(200);
+    const res = await request
+      .get(`/api/users/${user._id}/appointments/${appointment._id}`)
+      .set("Authorization", `Bearer ${authHeader}`);
+    expect(res.status).toBe(200);
+    expect(res.body.petName).toBe("Test");
+    expect(res.body.aptNotes).toBe("Test");
+  });
+  test("should not get an appointment with an invalid user id", async () => {
+    await createUser();
+    const authHeader = await getUserHeader();
+    const res = await request
+      .get(`/api/users/123/appointments/123`)
+      .set("Authorization", `Bearer ${authHeader}`);
+    expect(res.status).toBe(401);
+    expect(res.body.error).toBe("Could not retrieve user");
+  });
+
+});
