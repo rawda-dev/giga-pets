@@ -29,6 +29,7 @@ const userSchema = new Schema(
     },
     salt: String,
     updated: Date,
+    appointments: [{ type: mongoose.Schema.ObjectId, ref: "Appointment" }],
   },
 
   { timestamps: true }

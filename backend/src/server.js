@@ -4,6 +4,7 @@ import { config } from "./config";
 const app = express();
 import authRouter from "./routes/auth.route";
 import usersRouter from "./routes/user.route";
+import appointmentsRouter from "./routes/appointment.route";
 app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Giga Pets!");
@@ -11,6 +12,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/auth", authRouter);
 app.use("/api/users", usersRouter);
+app.use("/api", appointmentsRouter);
 if (process.env.NODE_ENV !== "test") {
   mongoose
     .connect(config.MONGO_URI, {

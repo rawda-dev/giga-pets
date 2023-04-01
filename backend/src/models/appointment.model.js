@@ -5,10 +5,7 @@ const appointmentSchema = new Schema({
     type: String,
     required: "Pet name is required",
   },
-  ownerName: {
-    type: String,
-    required: "Owner name is required",
-  },
+  
   aptNotes: {
     type: String,
     required: "Appointment Notes required",
