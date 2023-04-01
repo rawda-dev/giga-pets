@@ -1,12 +1,11 @@
 import React from "react";
 import { Button } from "@mui/material"
 function App() {
-  return (
-    <>
-      <Button variant="contained" color="primary">
-        Hello World
-      </Button>
-    </>
+    return (
+        <div>
+            <h2>Hello</h2>
+            
+        </div>
   );
 }
 
