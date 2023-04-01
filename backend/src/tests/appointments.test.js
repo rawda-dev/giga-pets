@@ -143,4 +143,18 @@ describe("PUT /api/users/:userId/appointments/:aptId", () => {
     expect(res.body.petName).toBe("Test2");
     expect(res.body.aptNotes).toBe("Test2");
   });
+  test("should not update an appointment with an invalid user id", async () => {
+    await createUser();
+    const authHeader = await getUserHeader();
+    const res = await request
+      .put(`/api/users/123/appointments/123`)
+      .set("Authorization", `Bearer ${authHeader}`)
+      .send({
+        petName: "Test2",
+        aptNotes: "Test2",
+        aptDate: "2022-04-02",
+      });
+    expect(res.status).toBe(401);
+    expect(res.body.error).toBe("Could not retrieve user");
+  });
 });
