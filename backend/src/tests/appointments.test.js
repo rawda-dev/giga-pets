@@ -98,7 +98,7 @@ describe("GET /api/users/:userId/appointments/:aptId", () => {
         aptNotes: "Test",
         aptDate: "2022-04-01",
       });
-      const appointment = await Appointment.findOne({user: user._id});
+    const appointment = await Appointment.findOne({ user: user._id });
     expect(res1.status).toBe(200);
     const res = await request
       .get(`/api/users/${user._id}/appointments/${appointment._id}`)
@@ -116,5 +116,31 @@ describe("GET /api/users/:userId/appointments/:aptId", () => {
     expect(res.status).toBe(401);
     expect(res.body.error).toBe("Could not retrieve user");
   });
-
+});
+describe("PUT /api/users/:userId/appointments/:aptId", () => {
+  test("should update an appointment", async () => {
+    await createUser();
+    const authHeader = await getUserHeader();
+    const res1 = await request
+      .post(`/api/users/${user._id}/appointments`)
+      .set("Authorization", `Bearer ${authHeader}`)
+      .send({
+        petName: "Test",
+        aptNotes: "Test",
+        aptDate: "2022-04-01",
+      });
+    const appointment = await Appointment.findOne({ user: user._id });
+    expect(res1.status).toBe(200);
+    const res = await request
+      .put(`/api/users/${user._id}/appointments/${appointment._id}`)
+      .set("Authorization", `Bearer ${authHeader}`)
+      .send({
+        petName: "Test2",
+        aptNotes: "Test2",
+        aptDate: "2022-04-02",
+      });
+    expect(res.status).toBe(200);
+    expect(res.body.petName).toBe("Test2");
+    expect(res.body.aptNotes).toBe("Test2");
+  });
 });
