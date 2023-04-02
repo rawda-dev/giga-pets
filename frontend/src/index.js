@@ -12,6 +12,8 @@ import "@fontsource/roboto/700.css";
 import { Register } from "./pages/Register";
 import { ThemeProvider } from "@mui/material";
 import theme from "./theme";
+import { Profile } from "./pages/Profile";
+import { EditProfile } from "./pages/EditProfile";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
@@ -22,6 +24,8 @@ root.render(
         <Route path="/" exact element={<App />} />
         <Route path="/register" exact element={<Register />} />
         <Route path="/login" exact element={<Login />} />
+        <Route path="/users/:id/profile" exact element={<Profile />} />
+        <Route path="/users/:id/profile/edit" exact element={<EditProfile />} />
       </Routes>
     </ThemeProvider>
     </BrowserRouter>
