@@ -29,7 +29,8 @@ const StyledContainer = styled.div`
   flex-direction: column;
   gap: 1rem;
   width: 100%;
-  max-width: 600px;
+  padding: 1rem;
+  max-width: 500px;
   margin: 0 auto;
 `;
 
