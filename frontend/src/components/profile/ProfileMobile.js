@@ -43,7 +43,12 @@ export const ProfileMobile = ({ id, name, email, about, handleChange }) => {
         >
           Edit
         </Button>
-        <Button variant="contained" color="error">
+        <Button
+          variant="contained"
+          color="error"
+          component={RouterLink}
+          to={`/users/${id}/profile/delete`}
+        >
           Delete
         </Button>
       </ButtonContainer>

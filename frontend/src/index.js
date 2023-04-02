@@ -14,6 +14,7 @@ import { ThemeProvider } from "@mui/material";
 import theme from "./theme";
 import { Profile } from "./pages/Profile";
 import { EditProfile } from "./pages/EditProfile";
+import { DeleteProfile } from "./pages/DeleteProfile";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
@@ -26,6 +27,7 @@ root.render(
         <Route path="/login" exact element={<Login />} />
         <Route path="/users/:id/profile" exact element={<Profile />} />
         <Route path="/users/:id/profile/edit" exact element={<EditProfile />} />
+        <Route path="/users/:id/profile/delete" exact element={<DeleteProfile />} />
       </Routes>
     </ThemeProvider>
     </BrowserRouter>

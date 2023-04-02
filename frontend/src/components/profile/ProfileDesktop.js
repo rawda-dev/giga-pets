@@ -37,13 +37,20 @@ export const ProfileDesktop = ({ id, name, email, about, handleChange }) => {
       <Typography variant="body1">{email}</Typography>
       {about && <Typography variant="body1">{about}</Typography>}
       <ButtonContainer>
-        <Button variant="contained" 
-        component={RouterLink}
-        to={`/users/${isAuthenticated().user._id}/profile/edit`}
-        color="primary">
-          Edit 
+        <Button
+          variant="contained"
+          component={RouterLink}
+          to={`/users/${isAuthenticated().user._id}/profile/edit`}
+          color="primary"
+        >
+          Edit
         </Button>
-        <Button variant="contained" color="error">
+        <Button
+          variant="contained"
+          color="error"
+          component={RouterLink}
+          to={`/users/${id}/profile/delete`}
+        >
           Delete
         </Button>
       </ButtonContainer>
