@@ -80,7 +80,7 @@ export const NewAppointment = () => {
           error: "",
           success: true,
         });
-        navigate(`my-appointments`);
+        navigate(`/my-appointments`);
       })
       .catch((error) => {
         setAppointment({

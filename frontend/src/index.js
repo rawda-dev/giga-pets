@@ -16,6 +16,7 @@ import { Profile } from "./pages/Profile";
 import { EditProfile } from "./pages/EditProfile";
 import { DeleteProfile } from "./pages/DeleteProfile";
 import { NewAppointment } from "./pages/NewAppointment";
+import { MyAppointments } from "./pages/MyAppointments";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
@@ -30,6 +31,7 @@ root.render(
         <Route path="/users/:id/profile/edit" exact element={<EditProfile />} />
         <Route path="/users/:id/profile/delete" exact element={<DeleteProfile />} />
         <Route path="/new-appointment" exact element={<NewAppointment />} />
+        <Route path="/my-appointments" exact element={<MyAppointments />} />
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
     </ThemeProvider>
