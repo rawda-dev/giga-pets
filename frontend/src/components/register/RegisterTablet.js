@@ -25,7 +25,7 @@ export const RegisterTablet = ({
   password,
   setPassword,
   error,
-  onLogin,
+  onRegister,
 }) => {
   return (
     <CenteredContainer>
@@ -65,7 +65,7 @@ export const RegisterTablet = ({
         variant="contained"
         color="warning"
         size="large"
-        onClick={onLogin}
+        onClick={onRegister}
       >
         Register
       </ButtonContainer>
