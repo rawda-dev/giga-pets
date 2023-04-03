@@ -84,7 +84,7 @@ export const Navbar = () => {
                 <Link
                   textAlign="center"
                   component={RouterLink}
-                  to="/"
+                  to="/my-appointments"
                   underline="none"
                 >
                   My Appointments
@@ -111,7 +111,7 @@ export const Navbar = () => {
 
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <Button
-              to="/"
+              to="/my-appointments"
               underline="none"
               component={RouterLink}
               sx={{ my: 2, color: "white", display: "block" }}
