@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { WithNavbar } from "./WithNavbar";
-import {Link as RouterLink} from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import vector from "../assets/pets_vector.png";
 import {
   Card,
@@ -110,10 +110,22 @@ export const MyAppointments = () => {
               <Typography variant="body2">{appointment.aptNotes}</Typography>
             </CardContent>
             <CardActions>
-              <Button size="small" variant="contained" color="primary" component={RouterLink} to={`/appointments/${appointment._id}/edit`}>
+              <Button
+                size="small"
+                variant="contained"
+                color="primary"
+                component={RouterLink}
+                to={`/appointments/${appointment._id}/edit`}
+              >
                 Edit
               </Button>
-              <Button size="small" variant="contained" color="error">
+              <Button
+                size="small"
+                variant="contained"
+                color="error"
+                component={RouterLink}
+                to={`/appointments/${appointment._id}/delete`}
+              >
                 Delete
               </Button>
             </CardActions>
