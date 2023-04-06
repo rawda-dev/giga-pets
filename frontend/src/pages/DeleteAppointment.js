@@ -7,7 +7,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { Icon, IconButton, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { isAuthenticated, clearJWT } from "../utils/auth";
+import { isAuthenticated } from "../utils/auth";
 import axios from "axios";
 import { Navigate, useParams } from "react-router-dom";
 import styled from "styled-components";
