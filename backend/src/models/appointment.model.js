@@ -14,6 +14,10 @@ const appointmentSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  ownerName: {
+    type: String,
+    required: "Owner name is required",
+  },
   user: {
     type: Schema.ObjectId,
     ref: "User",
